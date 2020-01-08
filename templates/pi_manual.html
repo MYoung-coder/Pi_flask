@@ -1,0 +1,425 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PI MANUAL PAGE --SGH</title>
+    <script type="text/javascript" src="/static/logined_page_js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/logined_page_css/comon0.css">
+</head>
+
+<body>
+    <div class="loading">
+        <div class="loadbox"> <img src="/static/logined_page_images/loading.gif"> 页面加载中... </div>
+    </div>
+    <div class="head">
+        <h1 STYLE="font-family: 楷体"><img src="/static/logined_page_images/logo.png">信息与电气工程学院435-手动灌溉</h1>
+        <div class="weather"><img src="/static/logined_page_images/weather.png"><span>花有清香月有阴</span><span>{{ time_str }}</span><a href="http://www.causgh.com:7777/login/"><button style="border-radius:100px;color: darkred;padding-left: 20px;padding-right: 20px;font-size: 25px;padding-bottom:10px;padding-top:10px;background-color: #fbff05">Sign out</button></a></div>
+    </div>
+    <div class="mainbox">
+        <ul class="clearfix">
+            <li >
+                <div class="boxall" style="height: 2.7rem">
+                    <div class="alltitle">当前温室数据</div>
+
+                    <div class="sycm">
+                        <ul class="clearfix">
+                            <li><h2 id="air_temp"></h2><span>空气温度</span></li>
+                            <li><h2 id="air_humi"> </h2><span>空气湿度</span></li>
+                            <li><h2 id="light"></h2><span>光照强度</span></li>
+                        </ul>
+                        <div style="border-bottom: 1px solid rgba(255,255,255,.1)"></div>
+                        <ul class="clearfix">
+                            <li><h2 id="soil_temp"></h2><span>土壤温度</span></li>
+                            <li><h2 id="soil_humi"></h2><span>土壤湿度</span></li>
+                            <li><h2 id="time_value"></h2><span>数据时刻</span></li>
+                        </ul>
+                    </div>
+                    <script type="text/javascript">
+                    function update_datas()
+                    {
+                        $.ajax({
+                        type: 'get',
+                        url: '/logined_data_update',
+                        contentType: "application/json",
+                        //dataType: 'json',
+                        success: function(data){
+                            //alert(data['datas'][0]);
+                            document.getElementById('air_temp').innerHTML=data['datas'][0]+'&#176C';
+                            document.getElementById('air_humi').innerHTML=data['datas'][1]+'%';
+                            document.getElementById('light').innerHTML=data['datas'][2]+'Lux';
+                            document.getElementById('soil_temp').innerHTML=data['datas'][3]+'&#176C';
+                            document.getElementById('soil_humi').innerHTML=data['datas'][4]+'%';
+                            document.getElementById('time_value').innerHTML=data['datas'][5];
+                        },
+                        error: function(xhr, err){
+                            //alert(xhr.readyState);
+                        },
+                    });
+                    }
+                    setInterval(update_datas,30000);
+                    </script>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 2.65rem">
+                    <div class="alltitle">环境预警</div>
+                    <div class="sy" id="echarts1" ></div>
+                    <div class="sy" id="echarts2"></div>
+                    <div class="sy" id="echarts3" ></div>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 2.95rem">
+                    <div class="alltitle">网址模式切换</div>
+                    <div id="echarts4" style="height: 2.2rem; width: 100%;"></div>
+                    <div class="boxfoot"></div>
+                </div>
+            </li>
+
+            <li style="width: 70%;height: 9.5rem;padding-bottom: 0;margin-bottom: 0;line-height: 0">
+<iframe class="contents"  id="ifr" src="/pi_buttons_frame/" width="100%" height="96%" frameborder="0" scrolling="yes" ></iframe>
+            </li>
+        </ul>
+
+    </div>
+    <div class="back"></div>
+    <script language="JavaScript" src="/static/logined_page_js/js.js"></script>
+    <script type="text/javascript" src="/static/logined_page_js/echarts.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            myChart1.resize();
+            myChart2.resize();
+            myChart3.resize();
+
+        });
+        window.addEventListener("resize", function () {
+            myChart1.resize();
+            myChart2.resize();
+            myChart3.resize();
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        var v1;
+        var v2 = 0;
+        var v3 = 35;
+        var myChart1 = echarts.init(document.getElementById('echarts1'));
+
+        option1 = {
+            series: [{
+                type: 'pie',
+                radius: ['70%', '80%'],
+                color: '#0088cc',
+                label: {
+                    normal: {
+                        position: 'center'
+                    }
+                },
+                data: [{
+                    value: v3,
+                    name: '温度预设阈值',
+                    label: {
+                        normal: {
+                            formatter: function (params) {
+                                return v3;
+                            },
+                            textStyle: {
+                                fontSize: 20,
+                                color: '#fff',
+                            }
+                        }
+                    }
+                },{
+                    value: v1,
+                    name: '预设温度',
+                    label: {
+                        normal: {
+                            formatter: function (params) {
+                                ;
+                            },
+                            textStyle: {
+                                fontSize: 20,
+                                color: '#fff',
+                            }
+                        }
+                    }
+                },
+                ]
+            }]
+        };
+
+        var myChart3 = echarts.init(document.getElementById('echarts3'));
+
+        option2 = {
+            series: [{
+                type: 'pie',
+                radius: ['70%', '80%'],
+                color: '#fccb00',
+                label: {
+                    normal: {
+                        position: 'center'
+                    }
+                },
+                data: [{
+                    value: v1,
+                    name: '当前温度',
+                    label: {
+                        normal: {
+                            formatter: v1 + '',
+                            textStyle: {
+                                fontSize: 20,
+                                color: '#fff',
+                            }
+                        }
+                    }
+                }, {
+                    value: v3,
+                    name: '当前温度',
+                    label: {
+                        normal: {
+                            formatter: function (params) {
+
+                            },
+                            textStyle: {
+                                color: '#aaa',
+                                fontSize: 20
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: 'rgba(255,255,255,.2)'
+                        },
+                        emphasis: {
+                            color: '#fff'
+                        }
+                    },
+                }]
+            }]
+        };
+
+        var myChart2 = echarts.init(document.getElementById('echarts2'));
+        option3 = {
+            series: [{
+                type: 'pie',
+                radius: ['0%', '80%'],
+                color: '#cf0c1a',
+                label: {
+                    normal: {
+                        position: 'center'
+                    }
+                },
+                data: [{
+                    value: v2,
+                    name: '降温控制',
+                    label: {
+                        normal: {
+                            formatter: function (params) {
+
+                            },
+                            textStyle: {
+                                fontSize: 20,
+                                color: '#fff',
+                            }
+                        }
+                    }
+                }]
+            }]
+        };
+            myChart1.setOption(option1);
+            //myChart2.setOption(option2);
+            myChart3.setOption(option3);
+            var myChart = echarts.init(document.getElementById('echarts4'));
+        var plantCap = [{
+            name: 'IMAGES-CROP',
+            value:'',
+        }, {
+            name: 'GRAPH',
+            value:'',
+
+        }, {
+            name: 'HOME',
+            value:'',
+
+        }, {
+            name: 'RASP-M',
+            value:'',
+
+        }, {
+            name: 'CHARTS',
+            value:'',
+
+        }, {
+            name: 'RASP-A',
+            value:'',
+
+        }];
+        var datalist = [{
+            offset: [56, 48],
+            symbolSize: 110,
+
+            color: '#0c27cf',
+
+        }, {
+
+            offset: [30, 70],
+            symbolSize: 70,
+            color: '#1acf04',
+        }, {
+            offset: [0, 43],
+            symbolSize:70,
+            color: '#cf0c1a',
+
+        }, {
+            offset: [93, 30],
+            symbolSize: 70,
+            color: '#cf0cbf',
+        }, {
+            offset: [26, 19],
+            symbolSize: 65,
+            ccolor: '#cf0c1a',
+        }, {
+            offset: [75, 75],
+            symbolSize: 70,
+            color: '#00cfc3',
+        }];
+
+        var datas = [];
+        for (var i = 0; i < plantCap.length; i++) {
+            var item = plantCap[i];
+            var itemToStyle = datalist[i];
+            datas.push({
+                name: item.name,
+                value: itemToStyle.offset,
+                symbolSize: itemToStyle.symbolSize,
+                label: {
+                    normal: {
+                        textStyle: {
+                            fontSize: 14
+                        }
+                    }
+                },
+
+                itemStyle: {
+                    normal: {
+                        color: itemToStyle.color,
+                        opacity: itemToStyle.opacity
+                    }
+                },
+            })
+        }
+        option = {
+            grid: {
+                show: false,
+                top: 10,
+                bottom: 10,
+            },
+
+            xAxis: [{
+                gridIndex: 0,
+                type: 'value',
+                show: false,
+                min: 0,
+                max: 100,
+                nameLocation: 'middle',
+                nameGap: 5
+            }],
+
+            yAxis: [{
+                gridIndex: 0,
+                min: 0,
+                show: false,
+                max: 100,
+                nameLocation: 'middle',
+                nameGap: 30
+            }],
+            series: [{
+                type: 'scatter',
+                symbol: 'circle',
+                symbolSize: 120,
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: '{b}',
+                        color: '#FFF',
+                        textStyle: {
+                            fontSize: '30'
+                        }
+                    },
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#F30'
+                    }
+                },
+                data: datas
+            }]
+
+        };
+        myChart.setOption(option);
+        $(document).ready(function () {
+            myChart.resize();
+        });
+        window.addEventListener("resize", function () {
+            myChart.resize();
+        });
+
+        myChart.on('click', function (param){
+                   	var name=param.name;
+                   	if(name=="GRAPH"){
+                    window.location.href="http://www.causgh.com:7777/graph%3Frealname%3D{{ realname }}";
+                   	}else if(name=="HOME"){
+                      window.location.href="http://www.causgh.com:7777/logined%3Frealname%3D{{ realname }}";
+                    }else if(name=="CHARTS"){
+                      window.location.href="http://www.causgh.com:7777/chart%3Frealname%3D{{ realname }}";
+                    }else if(name=="RASP-M"){
+                      window.location.href="#";
+                    }else if(name=="RASP-A"){
+                      window.location.href="{{ url_for('pi_automate',realname='') }}{{ realname }}";
+                    }else if(name=="IMAGES-CROP"){
+                      window.location.href="{{ url_for('pi_images',realname='') }}{{ realname }}";
+                    }
+       			});
+        myChart3.on('click', function (){
+                        var data6 = {'Relay6': 'on'};
+                   	    $.ajax({
+                        type: 'get',
+                        url: '/logined_jiangwen_manual',
+                        data:data6,
+                        //contentType: "application/json",
+                        //dataType: 'json',
+                        success: function(data){
+                            alert(data);
+                        },
+                        error: function(xhr, err){
+                            //alert(xhr.readyState);
+                        },
+                    });
+
+       			});
+        myChart.on('click',eConsole);
+        myChart3.on('click',eConsole);
+
+    </script>
+    <script>
+        function jiangwen()
+        {
+         $.ajax({
+                    type: 'get',
+                    url: '/logined_jiangwen',
+                    contentType: "application/json",
+                    //dataType: 'json',
+                    success: function(data){
+                        //alert(data);
+                    },
+                    error: function(xhr, err){
+                        //alert(xhr.readyState);
+                    },
+                    });
+
+        }
+        setInterval(jiangwen,10000);
+    </script>
+    <script type="text/javascript" src="/static/logined_page_js/jquery.waypoints.min.js"></script>
+    <script type="text/javascript" src="/static/logined_page_js/jquery.countup.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <meta charset="UTF-8">
+    <style>
+*, *:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  //height: 80%;
+  color: #000000;
+  background-image: radial-gradient(#4f6875, #263238);
+}
+
+.toggle {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 60px;
+  color: white;
+  outline: 0;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 2px solid #546E7A;
+  background-color: #263238;
+  transition: all 500ms;
+}
+.toggle:active {
+  background-color: #48f43a;
+}
+.toggle:hover:not(.toggle--moving):after {
+  background-color: #455A64;
+}
+.toggle:after {
+  display: block;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: white;
+  background-color: #37474F;
+  border: 2px solid;
+  transition: all 500ms;
+}
+
+.toggle--on:after {
+  content: 'OFF';
+  border-radius: 50px 5px 5px 50px;
+  color: #f44336;
+}
+
+.toggle--closedall{
+    position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 60px;
+  outline: 0;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 2px solid #546E7A;
+  background-color: #263238;
+  transition: all 500ms;
+  content: 'OFF All';
+  color: #f44336;
+}
+
+.toggle--closedall:after {
+ display: block;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: 140px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: white;
+  background-color: #37474F;
+  border: 2px solid;
+  transition: all 500ms;
+}
+
+.toggle_Relay_all:after {
+  content: '停止灌溉';
+  border-radius: 50px 50px 50px 50px;
+  transform: translate(0%, 0);
+  color: #cf0c1a;
+}
+.toggle--off:after {
+  content: 'ON';
+  border-radius: 5px 50px 50px 5px;
+  transform: translate(100%, 0);
+  color: #66BB6A;
+}
+
+.toggle--moving {
+  background-color: #1c2429;
+}
+.toggle--moving:after {
+  color: transparent;
+  border-color: #435862;
+  background-color: #222c31;
+  transition: color 0s, transform 500ms, border-radius 500ms, background-color 500ms;
+}
+
+h1 {
+  font-size: 64px;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+</style>
+
+    <script src="/static/pi_manual_js/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+<h2 style="color: black">Buttons---according with boarding pins</h2>
+<P style="color: black">Setting the irri duration time and pipes</P>
+<p id="times" style="color: yellow"></p>
+<div>
+<table>
+    <tr>
+        <td>
+            开始时刻：<input id="time_start" type="datetime-local" value="2019-12-12T11:11"/>
+            <p id="start_status" hidden></p>
+        </td>
+        <td>&nbsp;</td>
+        <td><button type="submit" class="irrigation" style="padding: 10px;background-color:green;color: yellow">启动灌溉</button></td>
+            <p id="alert_to_setting" hidden></p>
+        <td>&nbsp;</td>
+        <td>
+            停止时刻：<input id="time_stop" type="datetime-local" value="2019-12-12T12:11"/>
+            <p id="irrigation_status" hidden></p>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+        <input id="p1" name="choose" type="checkbox" value="1">PIPE_1     </input>
+            <p id="p1_status" hidden></p>
+        <input id="p2" name="choose" type="checkbox" value="2">PIPE_2     </input>
+            <p id="p2_status" hidden></p>
+        <input id="p3" name="choose" type="checkbox" value="3">PIPE_3     </input>
+            <p id="p3_status" hidden></p>
+        <input id="p4" name="choose" type="checkbox" value="4">PIPE_4     </input>
+            <p id="p4_status" hidden></p>
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+        <input id="p5" name="choose" type="checkbox" value="5">PIPE_5     </input>
+            <p id="p5_status" hidden></p>
+        <input id="p6" name="choose" type="checkbox" value="6">PIPE_6     </input>
+            <p id="p6_status" hidden></p>
+        <input id="p7" name="choose" type="checkbox" value="7">PIPE_7     </input>
+            <p id="p7_status" hidden></p>
+        <input id="p8" name="choose" type="checkbox" value="8">PIPE_8     </input>
+            <p id="p8_status" hidden></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="#" id="no_1" class="toggle toggle--on Relay1 "></a>
+            <p id="Relay1" hidden></p>
+            <h3>Relay1-管路1</h3>
+            <p href="#" >&nbsp;</p>
+
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+            <a href="#" id="no_2" class="toggle toggle--on Relay2 "></a>
+            <p id="Relay2" hidden></p>
+            <h3>Relay2-管路2</h3>
+            <p href="#" >&nbsp;</p>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <a href="#" id="no_3" class="toggle toggle--on Relay3 "></a>
+            <p id="Relay3" hidden></p>
+            <h3>Relay3-管路3</h3>
+            <p href="#" >&nbsp;</p>
+
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+            <a href="#" id="no_4" class="toggle toggle--on Relay4 "></a>
+            <p id="Relay4" hidden></p>
+            <h3>Relay4-管路4</h3>
+            <p href="#" >&nbsp;</p>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="#" id="no_5" class="toggle toggle--on Relay5 "></a>
+            <p id="Relay5" hidden></p>
+            <h3>Relay5-管路5</h3>
+
+            <p href="#" >&nbsp;</p>
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+            <a href="#" id="no_6" class="toggle toggle--on Relay6 "></a>
+            <p id="Relay6" hidden></p>
+            <h3>Relay6-风扇</h3>
+
+            <p href="#" >&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="#" id="no_7" class="toggle toggle--on Relay7 "></a>
+            <p id="Relay7" hidden></p>
+            <h3>Relay7-水泵</h3>
+
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+            <a href="#" id="no_8" class="toggle toggle--on Relay8 "></a>
+            <p id="Relay8" hidden></p>
+            <h3>Relay8-保温</h3>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+        <td>
+            <a href="#" class="toggle--closedall toggle_Relay_all Relay_all " ></a>
+            <p id="Relay_all" hidden></p>
+            <h3>关闭所有</h3>
+            <p href="#" >&nbsp;</p>
+        </td>
+    </tr>
+</table>
+
+</div>
+<!----$$$$$$$$$$$$-------Main content-----$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$----------------- -->
+
+<script>
+                $(".irrigation").click(function () {
+                    $('#start_status').text('on');
+                    var x1 = document.getElementById('no_1');
+                    var x2 = document.getElementById('no_2');
+                    var x3 = document.getElementById('no_3');
+                    var x4 = document.getElementById('no_4');
+                    var x5 = document.getElementById('no_5');
+                    var x6 = document.getElementById('no_6');
+                    var x7 = document.getElementById('no_7');
+                    var x8 = document.getElementById('no_8');
+                    obj=document.getElementsByName('choose');
+                    check_val=[];
+                    for(i in obj){
+                        if(obj[i].checked){
+                            check_val.push(obj[i].value);
+                        }else{
+                            check_val.push(0);
+                        }
+                    }
+                    var sum=0;
+                    for(var j=0;j<8;j++){
+                        sum+=check_val[j];
+                    }
+                    //alert(check_val.length);
+                    alert(check_val);
+                    var data={
+                    'time_start': $('#time_start').val(),
+                    'time_stop': $('#time_stop').val(),
+                        'p1':$('#p1').is(':checked'),
+                        'p2':$('#p2').is(':checked'),
+                        'p3':$('#p3').is(':checked'),
+                        'p4':$('#p4').is(':checked'),
+                        'p5':$('#p5').is(':checked'),
+                        'p6':$('#p6').is(':checked'),
+                        'p7':$('#p7').is(':checked'),
+                        'p8':$('#p8').is(':checked'),
+                        'on_or_off':'on',
+                    };
+                $.ajax({
+                type:"get",
+                url:'/irrigation_start',
+                data:data,
+                success:function(datas){
+                    //alert('ok');
+                    $("#alert_to_setting").text($("#time_start").val());
+                    if ($("#alert_to_setting").text()!='' && sum!=0){
+                       alert('设置成功,自动灌溉');
+                       $('#irrigation_status').text('on');
+                        if(check_val[0]==1){
+                            $(x1).removeClass('toggle--on');
+                            $(x1).addClass('toggle--off');
+                        }
+                        if(check_val[1]==2){
+                            $(x2).removeClass('toggle--on');
+                            $(x2).addClass('toggle--off');
+                        }
+                        if(check_val[2]==3){
+                            $(x3).removeClass('toggle--on');
+                            $(x3).addClass('toggle--off');
+                        }
+                        if(check_val[3]==4){
+                            $(x4).removeClass('toggle--on');
+                            $(x4).addClass('toggle--off');
+                        }
+                        if(check_val[4]==5){
+                            $(x5).removeClass('toggle--on');
+                            $(x5).addClass('toggle--off');
+                        }
+                        if(check_val[5]==6){
+                            $(x6).removeClass('toggle--on');
+                            $(x6).addClass('toggle--off');
+                        }
+                        if(check_val[6]==7){
+                            $(x7).removeClass('toggle--on');
+                            $(x7).addClass('toggle--off');
+                        }
+                        if(check_val[7]==8){
+                            $(x8).removeClass('toggle--on');
+                            $(x8).addClass('toggle--off');
+                        }
+                        if($('#irrigation_status').text()=='on'){
+                             $(".irrigation").css({'backgroundColor':'gray'});
+                            $('.irrigation').attr("disabled",true);
+                       }
+                    }
+                    else{
+                        alert('请正确设置时间或管路');
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    alert(XMLHttpRequest.status);
+                    alert(textStatus.readyState);
+                },
+                    });
+                })
+        </script>
+<script>
+    function irri_duration()
+    {
+         $.ajax({
+                type:"get",
+                url:'/irrigation_duration_control',
+                contentType: "application/json",
+                //dataType: 'json',
+                success:function(datas){
+                      //alert('持续灌溉中');
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    alert(XMLHttpRequest.status);
+                    alert(textStatus.readyState);
+                },
+                    });
+     }
+     setInterval(irri_duration,5000);
+ </script>
+ <script type="text/javascript">
+     function  getD1(){
+         var date=new Date();
+         var d1=date.toLocaleTimeString();
+         var div1=document.getElementById("times");
+         div1.innerHTML =d1;
+     }
+     setInterval("getD1();",1000);
+</script>
+
+<script>
+    $(function() {
+        //var x = document.getElementById('p1_status');
+        var x1 = document.getElementById('no_1');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("automation_raspberry_control_relay1") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'true') {
+                    $(x1).removeClass('toggle--on');
+                    $(x1).addClass('toggle--off');
+                }
+                if (data == 'false') {
+                      $(x1).removeClass('toggle--off');
+                      $(x1).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x2 = document.getElementById('no_2');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("automation_raspberry_control_relay2") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'true') {
+                    $(x2).removeClass('toggle--on');
+                    $(x2).addClass('toggle--off');
+                }
+                if (data == 'false') {
+                      $(x2).removeClass('toggle--off');
+                      $(x2).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x3 = document.getElementById('no_3');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("automation_raspberry_control_relay4") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'true') {
+                    $(x3).removeClass('toggle--on');
+                    $(x3).addClass('toggle--off');
+                }
+                if (data == 'false') {
+                      $(x3).removeClass('toggle--off');
+                      $(x3).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x4 = document.getElementById('no_4');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("automation_raspberry_control_relay4") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'true') {
+                    $(x4).removeClass('toggle--on');
+                    $(x4).addClass('toggle--off');
+                }
+                if (data == 'false') {
+                      $(x5).removeClass('toggle--off');
+                      $(x5).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x5 = document.getElementById('no_5');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("automation_raspberry_control_relay5") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'true') {
+                    $(x5).removeClass('toggle--on');
+                    $(x5).addClass('toggle--off');
+                }
+                if (data == 'false') {
+                      $(x5).removeClass('toggle--off');
+                      $(x5).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x6 = document.getElementById('no_6');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("automation_raspberry_control_relay6") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'true') {
+                    $(x6).removeClass('toggle--on');
+                    $(x6).addClass('toggle--off');
+                }
+                if (data == 'false') {
+                      $(x6).removeClass('toggle--off');
+                      $(x6).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x7 = document.getElementById('no_7');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("automation_raspberry_control_relay7") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'true') {
+                    $(x7).removeClass('toggle--on');
+                    $(x7).addClass('toggle--off');
+                }
+                if (data == 'false') {
+                      $(x7).removeClass('toggle--off');
+                      $(x7).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x8 = document.getElementById('no_8');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("automation_raspberry_control_relay8") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'true') {
+                    $(x8).removeClass('toggle--on');
+                    $(x8).addClass('toggle--off');
+                }
+                if (data == 'false') {
+                      $(x8).removeClass('toggle--off');
+                      $(x8).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x8 = $('.irrigation');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("automation_irrigation_status_control") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'on') {
+                    $(".irrigation").css({'backgroundColor':'gray'});
+                    $('.irrigation').attr("disabled",true);
+                }
+                if (data == 'false') {
+                    $(".irrigation").css({'backgroundColor':'green'});
+                    $('.irrigation').attr("disabled",false);
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function(){
+        $(".Relay_all").click(function() {
+            $.ajax({
+            type: "get",
+            url: '/automation_raspberry_controlall',
+            //data:data1,
+            //contentType: "application/json",
+            //dataType: 'json',
+             error: function(xhr, err){
+                alert('请求失败');
+                },
+            success: function(data){
+                //alert(data);
+                window.location.reload();
+                }
+            })
+               })
+    })
+</script>
+
+<script src='/static/pi_manual_js/jquery.js'></script>
+
+<div style="text-align:center;clear:both;">
+
+</div>
+
+</body>
+</html>

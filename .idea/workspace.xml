@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2de7a95e-b16d-47eb-b303-fd1907212141" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/raspberry_flask$Flask__raspberry_flask_py_.coverage" NAME="Flask (raspberry_flask.py) Coverage Results" MODIFIED="1576463947797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/raspberry_flask$SQL.coverage" NAME="SQL Coverage Results" MODIFIED="1576244463833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/raspberry_flask$sql_datas.coverage" NAME="sql_datas Coverage Results" MODIFIED="1576377913131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/raspberry_flask$Flask__raspberry_flask_py___1_.coverage" NAME="Flask (raspberry_flask.py) Coverage Results" MODIFIED="1576392761928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/raspberry_flask$raspberry_flask.coverage" NAME="raspberry_flask Coverage Results" MODIFIED="1576561541271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Flask Main" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1VpIyp9MyE38WnAKKKBz2Oa3FHG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\q\Desktop\raspberry_flask\raspberry_flask" />
+      <recent name="C:\Users\q\Desktop\raspberry_flask\raspberry_flask\templates" />
+      <recent name="D:\Graduate\编程类\PYTHON\projects\raspberry_flask" />
+      <recent name="D:\Graduate\编程类\PYTHON\projects\raspberry_flask\static" />
+      <recent name="D:\Graduate\编程类\PYTHON\projects\raspberry_flask\templates" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.websocket_client">
+    <configuration name="pi_automate.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http:///templates/pi_automate.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="pi_buttons_frame.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http:///templates/pi_buttons_frame.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="raspberry_flask" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="raspberry_flask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/raspberry_flask.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="raspberry_flask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="websocket_client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="raspberry_flask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/websocket_client.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.raspberry_flask" />
+      <item itemvalue="JavaScript Debug.pi_buttons_frame.html" />
+      <item itemvalue="JavaScript Debug.pi_automate.html" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.websocket_client" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.websocket_client" />
+        <item itemvalue="Python.raspberry_flask" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="JavaScript Debug.pi_buttons_frame.html" />
+        <item itemvalue="JavaScript Debug.pi_automate.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2de7a95e-b16d-47eb-b303-fd1907212141" name="Default Changelist" comment="" />
+      <created>1576240262422</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576240262422</updated>
+      <workItem from="1577943868871" duration="18238000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="623" y="143" key="#raspberry_flask" timestamp="1577943924770">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="143" key="#raspberry_flask/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577943924770" />
+    <state x="690" y="218" key="FileChooserDialogImpl" timestamp="1577961471174">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577961471174" />
+    <state width="1867" height="208" key="GridCell.Tab.0.bottom" timestamp="1577965453622">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577965453622" />
+    <state width="1547" height="129" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.40.1600.860@1920.40.1600.860" timestamp="1577961926572" />
+    <state width="1867" height="208" key="GridCell.Tab.0.center" timestamp="1577965453622">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="208" key="GridCell.Tab.0.center/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577965453622" />
+    <state width="1547" height="129" key="GridCell.Tab.0.center/0.0.1920.1040/1920.40.1600.860@1920.40.1600.860" timestamp="1577961926572" />
+    <state width="1867" height="208" key="GridCell.Tab.0.left" timestamp="1577965453622">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="208" key="GridCell.Tab.0.left/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577965453622" />
+    <state width="1547" height="129" key="GridCell.Tab.0.left/0.0.1920.1040/1920.40.1600.860@1920.40.1600.860" timestamp="1577961926572" />
+    <state width="1867" height="208" key="GridCell.Tab.0.right" timestamp="1577965453622">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="208" key="GridCell.Tab.0.right/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577965453622" />
+    <state width="1547" height="129" key="GridCell.Tab.0.right/0.0.1920.1040/1920.40.1600.860@1920.40.1600.860" timestamp="1577961926572" />
+    <state width="1867" height="82" key="GridCell.Tab.1.bottom" timestamp="1577965453582">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="82" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577965453582" />
+    <state width="1867" height="82" key="GridCell.Tab.1.center" timestamp="1577965453582">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="82" key="GridCell.Tab.1.center/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577965453582" />
+    <state width="1867" height="82" key="GridCell.Tab.1.left" timestamp="1577965453582">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="82" key="GridCell.Tab.1.left/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577965453582" />
+    <state width="1867" height="82" key="GridCell.Tab.1.right" timestamp="1577965453582">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="82" key="GridCell.Tab.1.right/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577965453582" />
+    <state width="1867" height="82" key="GridCell.Tab.2.bottom" timestamp="1577950378994">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="82" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577950378994" />
+    <state width="1867" height="82" key="GridCell.Tab.2.center" timestamp="1577950378994">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="82" key="GridCell.Tab.2.center/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577950378994" />
+    <state width="1867" height="82" key="GridCell.Tab.2.left" timestamp="1577950378994">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="82" key="GridCell.Tab.2.left/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577950378994" />
+    <state width="1867" height="82" key="GridCell.Tab.2.right" timestamp="1577950378994">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="82" key="GridCell.Tab.2.right/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577950378994" />
+    <state x="2103" y="40" width="1230" height="860" key="SettingsEditor" timestamp="1577965355646">
+      <screen x="1920" y="40" width="1600" height="860" />
+    </state>
+    <state x="2103" y="40" width="1230" height="860" key="SettingsEditor/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577965355646" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1577962194106">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040/1920.40.1600.860@0.0.1920.1040" timestamp="1577962194106" />
+    <state x="2369" y="44" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.40.1600.860@1920.40.1600.860" timestamp="1577961706732" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/raspberry_flask$raspberry_flask.coverage" NAME="raspberry_flask Coverage Results" MODIFIED="1577964228083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/raspberry_flask$test.coverage" NAME="test Coverage Results" MODIFIED="1577961926565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/raspberry_flask$websocket_client.coverage" NAME="websocket_client Coverage Results" MODIFIED="1577964230700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

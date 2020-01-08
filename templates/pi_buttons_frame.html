@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <meta charset="UTF-8">
+    <style>
+*, *:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  //height: 80%;
+  color: #000000;
+  background-image: radial-gradient(#4f6875, #263238);
+}
+
+.toggle {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 60px;
+  color: white;
+  outline: 0;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 2px solid #546E7A;
+  background-color: #263238;
+  transition: all 500ms;
+}
+.toggle:active {
+  background-color: #48f43a;
+}
+.toggle:hover:not(.toggle--moving):after {
+  background-color: #455A64;
+}
+.toggle:after {
+  display: block;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: white;
+  background-color: #37474F;
+  border: 2px solid;
+  transition: all 500ms;
+}
+
+.toggle--on:after {
+  content: 'OFF';
+  border-radius: 50px 5px 5px 50px;
+  color: #f44336;
+}
+
+.toggle--closedall{
+    position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 60px;
+  outline: 0;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 2px solid #546E7A;
+  background-color: #263238;
+  transition: all 500ms;
+  content: 'OFF All';
+  color: #f44336;
+}
+
+.toggle--closedall:after {
+ display: block;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: 140px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: white;
+  background-color: #37474F;
+  border: 2px solid;
+  transition: all 500ms;
+}
+
+.toggle_Relay_all:after {
+  content: 'CLICK';
+  border-radius: 50px 50px 50px 50px;
+  transform: translate(0%, 0);
+  color: #cf0c1a;
+}
+.toggle--off:after {
+  content: 'ON';
+  border-radius: 5px 50px 50px 5px;
+  transform: translate(100%, 0);
+  color: #66BB6A;
+}
+
+.toggle--moving {
+  background-color: #1c2429;
+}
+.toggle--moving:after {
+  color: transparent;
+  border-color: #435862;
+  background-color: #222c31;
+  transition: color 0s, transform 500ms, border-radius 500ms, background-color 500ms;
+}
+
+h1 {
+  font-size: 64px;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+</style>
+
+    <script src="/static/pi_manual_js/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+<h2 style="color: black">Buttons---according with boarding pins</h2>
+<div>
+<table>
+    <tr>
+        <td>
+            <a href="#" id="no_1" class="toggle toggle--on Relay1 "></a>
+            <p id="Relay1" hidden></p>
+            <h3>Relay1-管路1</h3>
+            <p href="#" >&nbsp;</p>
+
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+            <a href="#" id="no_2" class="toggle toggle--on Relay2 "></a>
+            <p id="Relay2" hidden></p>
+            <h3>Relay2-管路2</h3>
+            <p href="#" >&nbsp;</p>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <a href="#" id="no_3" class="toggle toggle--on Relay3 "></a>
+            <p id="Relay3" hidden></p>
+            <h3>Relay3-管路3</h3>
+            <p href="#" >&nbsp;</p>
+
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+            <a href="#" id="no_4" class="toggle toggle--on Relay4 "></a>
+            <p id="Relay4" hidden></p>
+            <h3>Relay4-管路4</h3>
+            <p href="#" >&nbsp;</p>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="#" id="no_5" class="toggle toggle--on Relay5 "></a>
+            <p id="Relay5" hidden></p>
+            <h3>Relay5-管路5</h3>
+
+            <p href="#" >&nbsp;</p>
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+            <a href="#" id="no_6" class="toggle toggle--on Relay6 "></a>
+            <p id="Relay6" hidden></p>
+            <h3>Relay6-风扇</h3>
+
+            <p href="#" >&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="#" id="no_7" class="toggle toggle--on Relay7 "></a>
+            <p id="Relay7" hidden></p>
+            <h3>Relay7-水泵</h3>
+
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+            <a href="#" id="no_8" class="toggle toggle--on Relay8 "></a>
+            <p id="Relay8" hidden></p>
+            <h3>Relay8-保温</h3>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+        <td>
+            <a href="#" class="toggle--closedall toggle_Relay_all Relay_all " ></a>
+            <p id="Relay_all" hidden></p>
+            <h3>关闭所有</h3>
+            <p href="#" >&nbsp;</p>
+        </td>
+    </tr>
+</table>
+
+</div>
+<!----$$$$$$$$$$$$-------Main content-----$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$----------------- -->
+<script>
+    function jiangwen_status()
+    {       var x6 = document.getElementById('no_6');
+         $.ajax({
+                type:"get",
+                url:'/jiangwen_status',
+                contentType: "application/json",
+                //dataType: 'json',
+                success:function(datas){
+                    //alert(datas);
+                      if (datas == 'jiangwenzhong'){
+                          $(x6).removeClass('toggle--on');
+                    $(x6).addClass('toggle--off');
+                      }
+                      if (datas == 'tingzhijiangwen'){
+                          $(x6).removeClass('toggle--off');
+                    $(x6).addClass('toggle--on');
+                      }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    alert(XMLHttpRequest.status);
+                    alert(textStatus.readyState);
+                },
+                    });
+     }
+     setInterval(jiangwen_status,5000);
+ </script>
+<script>
+    $(function(){
+        $(".Relay1").click(function() {
+            var x = $("#Relay1").text();
+            var r1 = document.getElementById('no_1');
+            var data1 = {'Relay1': 'on'};
+            var data2 = {'Relay1': 'off'}
+            if (x == "off" || x == "") {
+                $("#Relay1").text("on")
+                $.ajax({
+                    type: "get",
+                    url: '/manual_raspberry_control1',
+                    data:data1,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                     error: function(xhr, err){
+                        alert('请求失败')
+                        },
+                    success: function(data){
+                        //alert(data)
+                        $(r1).removeClass('toggle--on');
+                        $(r1).addClass('toggle--off');
+                        }
+                    })
+                }else{
+                $("#Relay1").text("off")
+                $.ajax({
+                    type: 'get',
+                    url: '/manual_raspberry_control1',
+                    data: data2,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                    error: function (xhr, err) {
+                        alert('请求失败')
+                    },
+                    success: function (data) {
+                        //alert(data)
+                        $(r1).removeClass('toggle--off');
+                        $(r1).addClass('toggle--on');
+                    }
+                })
+            }
+            })
+            })
+</script>
+
+<script>
+    $(function(){
+        $(".Relay2").click(function() {
+            var x = $("#Relay2").text();
+            var r2 = document.getElementById('no_2');
+            var data1 = {'Relay2': 'on'};
+            var data2 = {'Relay2': 'off'};
+            if (x == "off" || x == "") {
+                $("#Relay2").text("on");
+                $.ajax({
+                    type: "get",
+                    url: '/manual_raspberry_control2',
+                    data:data1,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                     error: function(xhr, err){
+                        alert('请求失败')
+                        },
+                    success: function(data){
+                        //alert(data)
+                        $(r2).removeClass('toggle--on');
+                        $(r2).addClass('toggle--off');
+                        }
+                    })
+                }else{
+                $("#Relay2").text("off");
+                $.ajax({
+                    type: 'get',
+                    url: '/manual_raspberry_control2',
+                    data: data2,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                    error: function (xhr, err) {
+                        alert('请求失败')
+                    },
+                    success: function (data) {
+                        //alert(data)
+                        $(r2).removeClass('toggle--off');
+                        $(r2).addClass('toggle--on');
+                    }
+                })
+            }
+            })
+            })
+</script>
+
+<script>
+    $(function(){
+        $(".Relay3").click(function() {
+            var x = $("#Relay3").text()
+            var r3 = document.getElementById('no_3');
+            var data1 = {'Relay3': 'on'}
+            var data2 = {'Relay3': 'off'}
+            if (x == "off" || x == "") {
+                $("#Relay3").text("on")
+                $.ajax({
+                    type: "get",
+                    url: '/manual_raspberry_control3',
+                    data:data1,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                     error: function(xhr, err){
+                        alert('请求失败')
+                        },
+                    success: function(data){
+                        //alert(data)
+                        $(r3).removeClass('toggle--on');
+                        $(r3).addClass('toggle--off');
+                        }
+                    })
+                }else{
+                $("#Relay3").text("off")
+                $.ajax({
+                    type: 'get',
+                    url: '/manual_raspberry_control3',
+                    data: data2,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                    error: function (xhr, err) {
+                        alert('请求失败')
+                    },
+                    success: function (data) {
+                        //alert(data)
+                        $(r3).removeClass('toggle--off');
+                        $(r3).addClass('toggle--on');
+                    }
+                })
+            }
+            })
+            })
+</script>
+
+<script>
+    $(function(){
+        $(".Relay4").click(function() {
+            var x = $("#Relay4").text()
+            var r4 = document.getElementById('no_4');
+            var data1 = {'Relay4': 'on'}
+            var data2 = {'Relay4': 'off'}
+            if (x == "off" || x == "") {
+                $("#Relay4").text("on")
+                $.ajax({
+                    type: "get",
+                    url: '/manual_raspberry_control4',
+                    data:data1,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                     error: function(xhr, err){
+                        alert('请求失败')
+                        },
+                    success: function(data){
+                        //alert(data)
+                        $(r4).removeClass('toggle--on');
+                        $(r4).addClass('toggle--off');
+                        }
+                    })
+                }else{
+                $("#Relay4").text("off")
+                $.ajax({
+                    type: 'get',
+                    url: '/manual_raspberry_control4',
+                    data: data2,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                    error: function (xhr, err) {
+                        alert('请求失败')
+                    },
+                    success: function (data) {
+                        //alert(data)
+                        $(r4).removeClass('toggle--off');
+                        $(r4).addClass('toggle--on');
+                    }
+                })
+            }
+            })
+            })
+</script>
+
+<script>
+    $(function(){
+        $(".Relay5").click(function() {
+            var x = $("#Relay5").text();
+            var r5 = document.getElementById('no_5');
+            var data1 = {'Relay5': 'on'}
+            var data2 = {'Relay5': 'off'}
+            if (x == "off" || x == "") {
+                $("#Relay5").text("on")
+                $.ajax({
+                    type: "get",
+                    url: '/manual_raspberry_control5',
+                    data:data1,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                     error: function(xhr, err){
+                        alert('请求失败')
+                        },
+                    success: function(data){
+                        //alert(data)
+                        $(r5).removeClass('toggle--on');
+                        $(r5).addClass('toggle--off');
+                        }
+                    })
+                }else{
+                $("#Relay5").text("off")
+                $.ajax({
+                    type: 'get',
+                    url: '/manual_raspberry_control5',
+                    data: data2,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                    error: function (xhr, err) {
+                        alert('请求失败')
+                    },
+                    success: function (data) {
+                        //alert(data)
+                        $(r5).removeClass('toggle--off');
+                        $(r5).addClass('toggle--on');
+                    }
+                })
+            }
+            })
+            })
+</script>
+
+<script>
+    $(function(){
+        $(".Relay6").click(function() {
+            var x = $("#Relay6").text()
+            var r6 = document.getElementById('no_6');
+            var data1 = {'Relay6': 'on'}
+            var data2 = {'Relay6': 'off'}
+            if (x == "off" || x == "") {
+                $("#Relay6").text("on")
+                $.ajax({
+                    type: "get",
+                    url: '/manual_raspberry_control6',
+                    data:data1,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                     error: function(xhr, err){
+                        alert('请求失败')
+                        },
+                    success: function(data){
+                        //alert(data)
+                        $(r6).removeClass('toggle--on');
+                        $(r6).addClass('toggle--off');
+                        }
+                    })
+                }else{
+                $("#Relay6").text("off")
+                $.ajax({
+                    type: 'get',
+                    url: '/manual_raspberry_control6',
+                    data: data2,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                    error: function (xhr, err) {
+                        alert('请求失败')
+                    },
+                    success: function (data) {
+                       // alert(data)
+                        $(r6).removeClass('toggle--off');
+                        $(r6).addClass('toggle--on');
+                    }
+                })
+            }
+            })
+            })
+</script>
+
+<script>
+    $(function(){
+        $(".Relay7").click(function() {
+            var x = $("#Relay7").text();
+            var r7 = document.getElementById('no_7');
+            var data1 = {'Relay7': 'on'};
+            var data2 = {'Relay7': 'off'};
+            if (x == "off" || x == "") {
+                $("#Relay7").text("on");
+                $.ajax({
+                    type: "get",
+                    url: '/manual_raspberry_control7',
+                    data:data1,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                     error: function(xhr, err){
+                        alert('请求失败')
+                        },
+                    success: function(data){
+                        //alert(data)
+                        $(r7).removeClass('toggle--on');
+                        $(r7).addClass('toggle--off');
+                        }
+                    })
+                }else{
+                $("#Relay7").text("off")
+                $.ajax({
+                    type: 'get',
+                    url: '/manual_raspberry_control7',
+                    data: data2,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                    error: function (xhr, err) {
+                        alert('请求失败')
+                    },
+                    success: function (data) {
+                        //alert(data)
+                        $(r7).removeClass('toggle--off');
+                        $(r7).addClass('toggle--on');
+                    }
+                })
+            }
+            })
+            })
+</script>
+
+<script>
+    $(function(){
+
+        $(".Relay8").click(function() {
+            var x = $("#Relay8").text();
+            var r8 = document.getElementById('no_8');
+            var data1 = {'Relay8': 'on'};
+            var data2 = {'Relay8': 'off'};
+            if (x == "off" || x == "") {
+                $("#Relay8").text("on");
+                $.ajax({
+                    type: "get",
+                    url: '/manual_raspberry_control8',
+                    data:data1,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                     error: function(xhr, err){
+                        alert('请求失败');
+                        },
+                    success: function(data){
+                        //alert(data)
+                        $(r8).removeClass('toggle--on');
+                        $(r8).addClass('toggle--off');
+                        }
+                    })
+                }else{
+                $("#Relay8").text("off")
+                $.ajax({
+                    type: 'get',
+                    url: '/manual_raspberry_control8',
+                    data: data2,
+                    //contentType: "application/json",
+                    //dataType: 'json',
+                    error: function (xhr, err) {
+                        alert('请求失败')
+                    },
+                    success: function (data) {
+                        //alert(data)
+                        $(r8).removeClass('toggle--off');
+                        $(r8).addClass('toggle--on');
+                    }
+                })
+            }
+            })
+            })
+</script>
+
+<script>
+    $(function() {
+        var x1 = document.getElementById('no_1');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("manual_raspberry_control_relay1") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'on') {
+                    $("#Relay1").text("on");
+                    $(x1).removeClass('toggle--on');
+                    $(x1).addClass('toggle--off');
+                }
+                if (data == 'off') {
+                      $(x1).removeClass('toggle--off');
+                      $(x1).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x2 = document.getElementById('no_2');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("manual_raspberry_control_relay2") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'on') {
+                    $("#Relay2").text("on");
+                    $(x2).removeClass('toggle--on');
+                    $(x2).addClass('toggle--off');
+                }
+                if (data == 'off') {
+                      $(x2).removeClass('toggle--off');
+                      $(x2).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x3 = document.getElementById('no_3');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("manual_raspberry_control_relay3") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'on') {
+                    $("#Relay3").text("on");
+                    $(x3).removeClass('toggle--on');
+                    $(x3).addClass('toggle--off');
+                }
+                if (data == 'off') {
+                      $(x3).removeClass('toggle--off');
+                      $(x3).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x4 = document.getElementById('no_4');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("manual_raspberry_control_relay4") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'on') {
+                    $("#Relay4").text("on");
+                    $(x4).removeClass('toggle--on');
+                    $(x4).addClass('toggle--off');
+                }
+                if (data == 'off') {
+                      $(x5).removeClass('toggle--off');
+                      $(x5).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x5 = document.getElementById('no_5');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("manual_raspberry_control_relay5") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'on') {
+                    $("#Relay5").text("on");
+                    $(x5).removeClass('toggle--on');
+                    $(x5).addClass('toggle--off');
+                }
+                if (data == 'off') {
+                      $(x5).removeClass('toggle--off');
+                      $(x5).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x6 = document.getElementById('no_6');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("manual_raspberry_control_relay6") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'on') {
+                    $("#Relay6").text("on");
+                    $(x6).removeClass('toggle--on');
+                    $(x6).addClass('toggle--off');
+                }
+                if (data == 'off') {
+                      $(x6).removeClass('toggle--off');
+                      $(x6).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x7 = document.getElementById('no_7');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("manual_raspberry_control_relay7") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'on') {
+                    $("#Relay7").text("on");
+                    $(x7).removeClass('toggle--on');
+                    $(x7).addClass('toggle--off');
+                }
+                if (data == 'off') {
+                      $(x7).removeClass('toggle--off');
+                      $(x7).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        var x8 = document.getElementById('no_8');
+        //var x1 = $("#Relay8").text();
+        $.ajax({
+            type: 'get',
+            url: '{{ url_for("manual_raspberry_control_relay8") }}',
+            //data:$("#count").text(),
+            //contentType: "application/json",
+            //dataType: 'json',
+            success: function (data) {
+                if (data == 'on') {
+                    $("#Relay8").text("on");
+                    $(x8).removeClass('toggle--on');
+                    $(x8).addClass('toggle--off');
+                }
+                if (data == 'off') {
+                      $(x8).removeClass('toggle--off');
+                      $(x8).addClass('toggle--on');
+                }
+            },
+        });
+    })
+</script>
+
+<script>
+    $(function(){
+        $(".Relay_all").click(function() {
+            var data1 = {'Relay_all': 'all'}
+            $.ajax({
+            type: "get",
+            url: '/manual_raspberry_controlall',
+            data:data1,
+            //contentType: "application/json",
+            //dataType: 'json',
+             error: function(xhr, err){
+                alert('请求失败');
+                },
+            success: function(data){
+                alert(data);
+                window.location.reload();
+                }
+            })
+               })
+    })
+</script>
+
+<script src='/static/pi_manual_js/jquery.js'></script>
+
+<div style="text-align:center;clear:both;">
+
+</div>
+
+</body>
+</html>

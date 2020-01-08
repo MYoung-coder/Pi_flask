@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="initial-scale=1,user-scalable=no,width=device-width">
+<title></title>
+<link rel='stylesheet' href='/static/pi_images_css_js/masterslider.css' type='text/css' media='all' />
+<link rel='stylesheet' href='/static/pi_images_css_js/ms-showcase2.css' type='text/css' media='all' />
+<link rel='stylesheet' href='/static/pi_images_css_js/masterslider.main.css' type='text/css' media='all' />
+<script src="/static/pi_images_css_js/modernizr-2.6.2.min.js"></script>
+<script type='text/javascript' src='/static/pi_images_css_js/jquery.js'></script>
+<script type='text/javascript' src='/static/pi_images_css_js/masterslider.min.js'></script>
+<script type='text/javascript' src='/static/pi_images_css_js/jquery.easing.min.js'></script>
+<script>
+var ms_grabbing_curosr='images/grabbing.cur',ms_grab_curosr='images/grab.cur';
+window.$ = jQuery.noConflict();
+</script>
+<!--[if IE 8]><link rel="stylesheet" type="text/css" href="css/vc-ie8.css" media="screen"><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="css/ie7.css" type="text/css" media="screen"/><![endif]-->
+</head>
+<body style="background-color:#333;">
+<script type="text/javascript">
+	$(document).ready(function(){
+		var slider = new MasterSlider();
+		slider.setup('masterslider' , {
+			width:610,
+			height:630,
+			space:5,
+			view:'basic'
+		});
+		slider.control('arrows');
+		slider.control('scrollbar' , {dir:'h'});
+		slider.control('thumblist' , {autohide:false ,dir:'v',arrows:false});
+	});
+</script>
+<div style="text-align:center;clear:both;">
+</div>
+<div style="max-width:800px;margin:10px auto;">
+<div class="ms-showcase2-template ms-dir-v">
+  <!-- masterslider -->
+    <h2>Raspberry PI takes pictures,&nbsp;&nbsp;show 50 crops for the day</h2>
+  <div class="master-slider ms-skin-default" id="masterslider">
+    <div class="ms-slide"> <img src="/static/pi_images_image/loading-2.gif" data-src="/static/pi_images_image/big/1.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="/static/pi_images_image/1.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="/static/pi_images_image/loading-2.gif" data-src="/static/pi_images_image/big/2.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="/static/pi_images_image/2.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="/static/pi_images_image/loading-2.gif" data-src="/static/pi_images_image/big/3.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="/static/pi_images_image/3.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="/static/pi_images_image/loading-2.gif" data-src="/static/pi_images_image/big/4.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="/static/pi_images_image/4.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="/static/pi_images_image/loading-2.gif" data-src="/static/pi_images_image/big/5.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="/static/pi_images_image/5.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="/static/pi_images_image/loading-2.gif" data-src="/static/pi_images_image/big/6.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="/static/pi_images_image/6.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="/static/pi_images_image/loading-2.gif" data-src="/static/pi_images_image/big/7.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="/static/pi_images_image/7.jpg" alt="thumb" /> </div>
+  </div>
+    <h3>This page only provides image display, if download, please go to:</h3>
+    <a href="https://www.baidu.com">http://......</a>
+  <!-- end of masterslider -->
+</div>
+</div>
+
+<div style="text-align:center;clear:both;">
+
+</div>
+</body>
+</html>
